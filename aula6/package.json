@@ -1,20 +1,20 @@
 {
-  "name": "aula5",
+  "name": "aula6",
   "version": "1.0.0",
-  "main": "node-intro.js",
-  "directories": {
-    "test": "test"
-  },
+  "description": "",
+  "main": "callback.js",
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "type": "module",
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.10"
   }
 }
