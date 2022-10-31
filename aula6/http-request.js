@@ -12,6 +12,7 @@ function main(){
     fetchLoripsum() 
         .then(body => console.log("BODY" , body))
         .catch(err => console.log("Error", err))
+        .then(x => console.log("x" , x))
 }
 
 main()

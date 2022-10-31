@@ -8,6 +8,9 @@ readPromise
     .then(rrr => console.log(rrr))
     .catch(error => console.log("Catch2",error))
     
-    
-
 console.log("DONE REALLY?")
+
+
+
+
+   
