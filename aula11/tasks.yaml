@@ -1,0 +1,162 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Tasks API
+  description: This is a simple Tasks API
+  # put the contact info for your development or API team
+  contact:
+    email: you@your-company.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+tags :
+  - name: tasks
+
+paths:
+  /tasks:
+    get:
+      summary: get tasks
+      operationId: getTasks
+      description: 
+        By passing in the appropriate options, you can search for
+        available tasks
+      tags:
+      - tasks
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: limit
+        description: maximum number of records to return
+        type: integer
+        minimum: 0
+        maximum: 50
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Task'
+        400:
+          description: bad input parameter
+    post:
+      summary: adds a task
+      operationId: addTask
+      description: Adds a task to the system
+      tags:
+      - tasks
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: task
+        description: Task to add
+        schema:
+          $ref: '#/definitions/NewTask'
+      responses:
+        201:
+          description: Task created
+        400:
+          description: Invalid input, object invalid
+          
+  /tasks/{taskId}:
+    get:
+      summary: Get a task given its id
+      description: Get a task given its id
+      operationId: getTaskById
+      tags:
+      - tasks
+      produces:
+      - application/json
+      parameters:
+      - name: taskId
+        in: path
+        description: ID of task that to be fetched
+        required: true
+        type: integer
+        
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Task'
+        400:
+          description: Invalid ID supplied
+
+        404:
+          description: Task not found
+    delete:
+      summary: Delete a task by ID
+      description: Delete a task by ID
+      operationId: deleteTask
+      tags:
+      - tasks
+      produces:
+      - application/json
+      parameters:
+      - name: taskId
+        in: path
+        description: ID of the task to be deleted
+        required: true
+        type: integer
+       
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Task not found
+    put:
+      summary: updates a task
+      operationId: updateTask
+      description: Updates a Task in the system
+      tags:
+      - tasks
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: taskId
+        in: path
+        description: ID of the task to be deleted
+        required: true
+        type: integer
+      - in: body
+        name: task
+        description: Task to add
+        schema:
+          $ref: '#/definitions/Task'
+      responses:
+        201:
+          description: task created
+        404:
+          description: Task not found
+
+
+definitions:
+  Task:
+    type: object
+    required:
+    - id
+    - text
+    properties:
+      id:
+        type: integer
+        example: 1
+      text:
+        type: string
+        example: study PI
+
+  NewTask:
+    type: object
+    required:
+    - text
+    properties:
+      text:
+        type: string
+        example: study PI
