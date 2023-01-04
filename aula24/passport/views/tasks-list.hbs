@@ -1,0 +1,20 @@
+<a href="/createTask">Create Task</a>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+            <th>Text</th>
+            <th></th>
+    </tr>
+    {{#each tasks}}
+        <tr>
+            <td><a href="tasks/{{id}}">{{id}}</a> </td>
+            <td>{{text}}</td>
+            <td>
+                <form method="post" action="/tobedefined/{{id}}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+      

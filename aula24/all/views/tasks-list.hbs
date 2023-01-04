@@ -1,0 +1,15 @@
+<a href="/createTask">Create Task</a>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+            <th>Text</th>
+            <th></th>
+    </tr>
+    {{#each tasks}}
+        <tr id="taskrow_{{id}}" >
+            <td><a href="tasks/{{id}}">{{id}}</a> </td>
+            <td>{{text}}</td>
+            <td><button id="btn_{{id}}"> Delete </button></td>
+        </tr>
+    {{/each}}
+</table>
