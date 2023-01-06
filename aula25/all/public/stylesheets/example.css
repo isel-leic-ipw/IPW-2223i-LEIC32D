@@ -1,0 +1,18 @@
+p {
+    background-color: red;
+    margin: 0;
+    
+}
+.classYellow{
+    background-color: yellow;
+}
+#pgreen{
+    background-color: green;
+    border-style: dotted;
+}
+#divBlue{
+    background-color: blue;
+}
+.spanMagenta{
+    background-color: magenta;
+}
